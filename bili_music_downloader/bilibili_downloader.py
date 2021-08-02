@@ -1,5 +1,7 @@
+import argparse
 import json
 import os
+
 import requests
 
 
@@ -7,7 +9,6 @@ class Downloader:
     def __init__(self):
         self.download_api = 'https://api.bilibili.com/x/player/playurl'
         self.info_api = 'https://api.bilibili.com/x/web-interface/view'
-        '''https://www.bilibili.com/video/BV1m64y1X7qk'''
         self.params = {'cid': None, 'fnval': 16}
         self.header = {'Referer': 'https://www.bilibili.com/', 'User-Agent': None, 'Cookie':{'SESSDATA': None}}
 
@@ -36,8 +37,5 @@ class Downloader:
 
 
 if __name__ == '__main__':
-    d = Downloader()
-    d.header['Cookie']['SESSDATA'] = 'eec47000%2C1630908984%2Cb1fe7*31'
-    d.header['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15'
-    d.download('BV1m64y1X7qk')
+    pass
 
