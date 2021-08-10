@@ -1,4 +1,3 @@
-import argparse
 import json
 import os
 
@@ -33,9 +32,10 @@ class Downloader:
             i = 'ffmpeg -headers {} -i "{}" -c copy {}.m4s'.format(header, url, str(p['cid']))
             os.system('ffmpeg -headers {} -i "{}" -acodec alac {}.m4a'.format(header, url, str(p['cid'])))
 
-        i = 0
-
 
 if __name__ == '__main__':
-    pass
+    d = Downloader()
+    d.header['Cookie']['SESSDATA'] = 'eec47000%2C1630908984%2Cb1fe7*31'
+    d.header['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15'
+    d.download('BV1Xy4y1C7Fi')
 
