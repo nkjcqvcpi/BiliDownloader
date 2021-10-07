@@ -3,6 +3,7 @@ import os
 import subprocess
 import tempfile
 import time
+import logging
 
 import cv2
 import requests
@@ -29,6 +30,8 @@ class BiliDownloader:
     def download(self, ids, dl_path=None):
         self.dl_path = dl_path or self.dl_path
         vids = self.parser(ids)
+
+        logging.info('Download Pending Video:')
 
         for vid in vids:
             param = {v: k for k, v in vid.items()}
@@ -79,7 +82,7 @@ class BiliDownloader:
 
     def _convert(self, fp, info, p_name, dl_path):
         metadata, filename = self._metadata(info, p_name)
-        dl_path = os.path.join(dl_path, filename)
+        dl_path = os.path.join(dl_path, filename) if dl_path else filename
         cmd = ['ffmpeg', '-i', fp, '-c', 'copy', '-y'] + metadata + [dl_path]
         subprocess.run(cmd)
         return dl_path
