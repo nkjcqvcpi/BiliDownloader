@@ -17,8 +17,8 @@ class Parser:
         bv = self.bv_p.search(vid)
         av = self.av_p.search(vid)
         if bv:
-            return {bv.string: 'bvid'}
+            return {bv.group(): 'bvid'}
         elif av:
-            return {av.string: 'avid'}
+            return {av.group(): 'avid'}
         else:
             raise SyntaxWarning
